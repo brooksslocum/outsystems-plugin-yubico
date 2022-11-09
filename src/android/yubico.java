@@ -15,6 +15,12 @@ import com.yubico.yubikit.android.transport.nfc.NfcConfiguration;
 import com.yubico.yubikit.android.transport.nfc.NfcNotAvailable;
 import java.io.IOException;
 
+
+
+import com.yubico.yubikit.core.util.NdefUtils;
+import com.yubico.yubikit.android.transport.nfc.NfcYubiKeyDevice;
+
+
 public class yubico extends CordovaPlugin {
 
     CallbackContext callbackContext;
@@ -47,13 +53,16 @@ public class yubico extends CordovaPlugin {
                 // A YubiKey was brought within NFC range
                 ManagementSession.create(device, result -> {
                     try {
-                        ManagementSession management = result.getValue();
+                        /*ManagementSession management = result.getValue();
 
                         // Get the YubiKey serial number:
                         DeviceInfo info = management.getDeviceInfo();
                         int serialNumber = info.getSerialNumber();
 
-                        callbackContext.success(serialNumber);
+                        callbackContext.success(serialNumber);*/
+
+                        String credential = NdefUtils.getNdefPayload(((NfcYubiKeyDevice) device).readNdef());
+                        callbackContext.success(credential);
 
                     } catch (IOException | CommandException e) {
                         callbackContext.error("Error #001: Could not read YubiKey Serial Number.");
