@@ -49,9 +49,16 @@ public class yubico extends CordovaPlugin {
                 // A YubiKey was brought within NFC range
                 ManagementSession.create(device, result -> {
                     try {
-                        
-                        //String credential = "abc";
-                        //callbackContext.success(credential);
+                        ManagementSession management = result.getValue();
+
+                        // Get the YubiKey serial number:
+                        DeviceInfo info = management.getDeviceInfo();
+                        int serialNumber = info.getSerialNumber();
+
+                        //callbackContext.success(serialNumber);
+
+                        String credential = NdefUtils.getNdefPayload(((NfcYubiKeyDevice) device).readNdef());
+                        callbackContext.success(credential);
 
                     } catch (IOException | CommandException e) {
                         callbackContext.error("Error #001: Could not read YubiKey Serial Number.");
