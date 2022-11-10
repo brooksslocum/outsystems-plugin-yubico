@@ -50,7 +50,7 @@ public class yubico extends CordovaPlugin {
                 ManagementSession.create(device, result -> {
                     try {
                         
-                        String credential = NdefUtils.getNdefPayload(((NfcYubiKeyDevice) device).readNdef());
+                        String credential = "abc";
                         callbackContext.success(credential);
 
                     } catch (IOException | CommandException e) {
