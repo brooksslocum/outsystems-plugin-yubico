@@ -56,7 +56,7 @@ public class yubico extends CordovaPlugin {
 
 
             });
-        } catch ( NfcNotAvailable e) {
+        } catch ( IOException | NfcNotAvailable e) {
             if (e.isDisabled()) {
                 callbackContext.error("Error #002: Android NFC is turned off. " + e.getMessage());
             } else {
