@@ -46,32 +46,21 @@ public class yubico extends CordovaPlugin {
         try {
             yubiKitManager.startNfcDiscovery(new NfcConfiguration(), cordova.getActivity(), device -> {
 
-                // A YubiKey was brought within NFC range
-                ManagementSession.create(device, result -> {
-                    try {
-                        ManagementSession management = result.getValue();
 
-                        // Get the YubiKey serial number:
-                        DeviceInfo info = management.getDeviceInfo();
-                        int serialNumber = info.getSerialNumber();
 
-                        //callbackContext.success(serialNumber);
 
-                        String credential = NdefUtils.getNdefPayload(((NfcYubiKeyDevice) device).readNdef());
-                        callbackContext.success(credential);
 
-                    } catch (IOException | CommandException e) {
-                        callbackContext.error("Error #1, Error #001: Could not read YubiKey Serial Number. " + e.getMessage());
-                    } catch (Exception e) {
-                        callbackContext.error("Error #2, Error #001: Could not read YubiKey Serial Number. " + e.getMessage());
-                    }
-                });
+                String credential = NdefUtils.getNdefPayload(((NfcYubiKeyDevice) device).readNdef());
+                callbackContext.success(credential);
+
+
+
             });
         } catch ( NfcNotAvailable e) {
             if (e.isDisabled()) {
-                callbackContext.error("Error #002: Android NFC is turned off.");
+                callbackContext.error("Error #002: Android NFC is turned off. " + e.getMessage());
             } else {
-                callbackContext.error("Error #003: This device is not supported.");
+                callbackContext.error("Error #003: This device is not supported." + e.getMessage());
             }
         }
     }
