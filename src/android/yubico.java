@@ -61,9 +61,9 @@ public class yubico extends CordovaPlugin {
                         callbackContext.success(credential);
 
                     } catch (IOException | CommandException e) {
-                        callbackContext.error("Error #001: Could not read YubiKey Serial Number.");
+                        callbackContext.error("Error #1, Error #001: Could not read YubiKey Serial Number. " + e.getMessage());
                     } catch (Exception e) {
-                        callbackContext.error("Error #001: Could not read YubiKey Serial Number.");
+                        callbackContext.error("Error #2, Error #001: Could not read YubiKey Serial Number. " + e.getMessage());
                     }
                 });
             });
