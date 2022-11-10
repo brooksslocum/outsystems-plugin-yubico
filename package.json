@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andregrillo/outsystems-plugin-yubico.git"
+    "url": "git+https://github.com/brooksslocum/outsystems-plugin-yubico.git"
   },
   "keywords": [
     "ecosystem:cordova",
@@ -19,7 +19,7 @@
   "author": "Andre Grillo - OutSystems",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/andregrillo/outsystems-plugin-yubico/issues"
+    "url": "https://github.com/brooksslocum/outsystems-plugin-yubico/issues"
   },
-  "homepage": "https://github.com/andregrillo/outsystems-plugin-yubico#readme"
+  "homepage": "https://github.com/brooksslocum/outsystems-plugin-yubico#readme"
 }
