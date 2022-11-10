@@ -50,8 +50,8 @@ public class yubico extends CordovaPlugin {
                 ManagementSession.create(device, result -> {
                     try {
                         
-                        String credential = "abc";
-                        callbackContext.success(credential);
+                        //String credential = "abc";
+                        //callbackContext.success(credential);
 
                     } catch (IOException | CommandException e) {
                         callbackContext.error("Error #001: Could not read YubiKey Serial Number.");
