@@ -62,8 +62,8 @@ public class yubico extends CordovaPlugin {
 
                         //callbackContext.success(serialNumber);
 
-                        String credential = NdefUtils.getNdefPayload(((NfcYubiKeyDevice) device).readNdef());
-                        callbackContext.success(credential);
+                        //String credential = NdefUtils.getNdefPayload(((NfcYubiKeyDevice) device).readNdef());
+                        //callbackContext.success(credential);
 
                     } catch (IOException | CommandException e) {
                         callbackContext.error("Error #001: Could not read YubiKey Serial Number.");
